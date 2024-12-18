@@ -1,0 +1,26 @@
+<div class="flex-box">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <button
+        ngbNavLink
+        [routerLink]="['/meetings']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Filter / Search meetings
+      </button>
+    </li>
+    <li [ngbNavItem]="2">
+      <button
+        ngbNavLink
+        [routerLink]="['/meetings', 'add']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Add a meeting
+      </button>
+    </li>
+  </ul>
+  <hr />
+  <router-outlet></router-outlet>
+</div>

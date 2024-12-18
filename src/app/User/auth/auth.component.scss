@@ -1,0 +1,15 @@
+.flex-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //align-items: center;
+  padding: 20px;
+  border: 1px solid black;
+  width: 50%;
+  position: relative;
+  right: -18%;
+  margin: 50px;
+  -webkit-box-shadow: -1px -1px 33px -10px rgba(71, 114, 254, 1);
+  -moz-box-shadow: -1px -1px 33px -10px rgba(71, 114, 254, 1);
+  box-shadow: -1px -1px 33px -10px rgba(71, 114, 254, 1);
+}

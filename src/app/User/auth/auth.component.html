@@ -1,0 +1,12 @@
+<div class="flex-box">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <button ngbNavLink [routerLink]="['/auth', 'login']">Login</button>
+    </li>
+    <li [ngbNavItem]="2">
+      <button ngbNavLink [routerLink]="['/auth', 'signin']">SignIn</button>
+    </li>
+  </ul>
+  <hr />
+  <router-outlet></router-outlet>
+</div>

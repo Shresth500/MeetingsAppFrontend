@@ -1,0 +1,34 @@
+.flex-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //align-items: center;
+  padding: 20px;
+  border: 1px solid black;
+  width: 100%;
+  position: relative;
+  right: 0%;
+  top: -10px;
+  margin: 50px;
+  background-color: rgb(119, 184, 205);
+  //-webkit-box-shadow: -1px -1px 33px -10px rgba(71, 114, 254, 1);
+  //-moz-box-shadow: -1px -1px 33px -10px rgba(71, 114, 254, 1);
+  //box-shadow: -1px -1px 33px -10px rgba(71, 114, 254, 1);
+}
+
+.meeting-Session {
+  border: 1px solid #d3d3d3;
+  border-radius: 0;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+li {
+  margin-bottom: 10px; /* Adds space below each list item */
+}
+
+.w-25 {
+  width: 25%;
+}

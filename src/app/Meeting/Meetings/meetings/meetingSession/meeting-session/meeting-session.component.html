@@ -1,0 +1,61 @@
+<div>
+  <div class="flex-box no-margin">
+    <div class="col-md-6 col-md-offset-3 w-100">
+      <h1>Search for Meetings</h1>
+      <hr />
+      <form
+        name="form"
+        (ngSubmit)="f.form.valid && SearchMeet(f)"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="mb-3">
+          <label for="date" class="form-label">Date</label>
+          <select
+            class="form-select"
+            id="date"
+            name="date"
+            ngModel
+            [(ngModel)]="selectedValue"
+            #date="ngModel"
+          >
+            <option value="all" selected>ALL</option>
+            <option value="past">PAST</option>
+            <option value="present">TODAY</option>
+            <option value="future">UPCOMING</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="search">Search for</label>
+          <input
+            type="text"
+            class="form-control"
+            id="search"
+            name="search"
+            ngModel
+            #search="ngModel"
+            [(ngModel)]="searchText"
+          />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="p-3">
+    <h3>Meeting matching search criteria</h3>
+    <hr />
+    <ul class="list-group">
+      @for(meeting of filteredMeetingList; track meeting.id){
+      <li class="list-group-item meeting-Session">
+        <app-session-list
+          [meeting]="meeting"
+          (AddingMemeber)="addMember($event)"
+          (ExcuseFromMeeting)="excuseFromMeeting($event)"
+        ></app-session-list>
+      </li>
+      }
+    </ul>
+  </div>
+</div>

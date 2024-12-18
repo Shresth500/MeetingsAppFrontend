@@ -1,0 +1,51 @@
+<!--<p>session-list works!</p>-->
+<div class="row" *ngIf="meeting">
+  <div class="col-11">
+    <span class="display-center">
+      <h3>{{ meeting.date | date : "d MMMM y" }}</h3>
+      <h5>
+        {{ meeting.startTime.hours | number : "2.0" }}:{{
+          meeting.startTime.minutes | number : "2.0"
+        }}
+        - {{ meeting.endTime.hours | number : "2.0" }}:{{
+          meeting.endTime.minutes | number : "2.0"
+        }}
+      </h5>
+    </span>
+    <div>{{ meeting.name }}</div>
+    <div>
+      <button class="btn btn-danger" (click)="excuseFromMeeting(meeting.id)">
+        Excuse yourself
+      </button>
+    </div>
+    <hr />
+    <div class="display-center">
+      <strong> Attendees: </strong>
+      @for(attendee of meeting.attendees;track attendee.applicationUserId){
+      {{ attendee.email }} , }
+    </div>
+    <!--<form
+      name="form"
+      (ngSubmit)="f.form.valid && addAttendee(f)"
+      #f="ngForm"
+      novalidate
+      class="display-center"
+    >-->
+    <div class="display-center">
+      <select
+        class="form-select w-25"
+        id="attendee"
+        name="attendee"
+        ngModel
+        [(ngModel)]="selectedOption"
+        #attendee="ngModel"
+      >
+        <option value="">Select Member</option>
+        @for(user of registeredusers;track user.id){
+        <option value="{{ user.id }}">{{ user.email }}</option>
+        }
+      </select>
+      <button class="btn btn-info" (click)="addAttendee()">Add</button>
+    </div>
+  </div>
+</div>

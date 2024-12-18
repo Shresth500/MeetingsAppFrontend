@@ -1,0 +1,41 @@
+<!--<app-loading-spinner variant="success" *ngIf="loading" />-->
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button
+    type="button"
+    class="btn btn-primary border-dark"
+    (click)="pagination(-1)"
+  >
+    Previous
+  </button>
+  <button
+    type="button"
+    class="btn border-dark"
+    (click)="pagination_by_id(page)"
+    *ngIf="page_1"
+  >
+    {{ page }}
+  </button>
+  <button
+    type="button"
+    class="btn border-dark"
+    (click)="pagination_by_id(page + 1)"
+    *ngIf="page_2"
+  >
+    {{ page + 1 }}
+  </button>
+  <button
+    type="button"
+    class="btn border-dark"
+    (click)="pagination_by_id(page + 2)"
+    *ngIf="page_3"
+  >
+    {{ page + 2 }}
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary border-dark"
+    (click)="pagination(1)"
+  >
+    Next
+  </button>
+</div>

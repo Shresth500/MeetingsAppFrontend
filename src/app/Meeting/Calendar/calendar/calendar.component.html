@@ -1,0 +1,90 @@
+<div>
+  <h3>Calendar</h3>
+  <hr />
+  <span class="d-flex gap-60">
+    <h4>{{ model.day }}th {{ getMonths() }} {{ model.year }}</h4>
+    <div class="input-wrapper input-box">
+      <input
+        type="date"
+        id="date"
+        class="form-control"
+        placeholder="yyyy-mm-dd"
+        ngbDatepicker
+        #dp="ngbDatepicker"
+        [(ngModel)]="model"
+        (ngModelChange)="onInputChange($event)"
+      />
+      <span class="calendar-icon"><i class="fas fa-calendar-alt"></i></span>
+    </div>
+  </span>
+  <!--
+  <div class="hourly-timeline">
+    <div *ngFor="let interval of intervals" class="hour-box-wrapper">
+      <div class="hour-label-wrapper">
+        <div class="hour-label top-label">{{ interval.start }}</div>
+      </div>
+      <div class="hour-box"></div>
+      <div class="hour-box">
+        <div
+          *ngIf="isTimelineInInterval(userTimeline, interval)"
+          class="user-timeline"
+          [style.upper]="calculateLeftOffset(userTimeline, interval) + '%'"
+          [style.height]="calculateHeight(userTimeline, interval) + '%'"
+        ></div>
+      </div>
+    </div>
+  </div>
+  -->
+  <div class="hourly-timeline">
+    <div *ngFor="let interval of intervals" class="hour-box-wrapper">
+      <div class="hour-label-wrapper">
+        <div class="hour-label top-label">{{ interval.start }}</div>
+      </div>
+
+      <div class="hour-box">
+        <div
+          class="w-100 h-100 no-margin no-padding"
+          *ngIf="isTimelineInInterval(interval)"
+        >
+          @for(calendar of getCalendarData(interval);track calendar._id){
+          <div
+            *ngIf="getBottom(calendar) !== '' && getHeight(calendar) !== ''"
+            class="user-timeline no-margin no-padding"
+            [style.top]="getBottom(calendar) + '%'"
+            [style.height]="getHeight(calendar) + '%'"
+          >
+            <strong class="text-size-12">
+              {{ getName(calendar) }}
+            </strong>
+            <hr />
+            <div class="text-size-12 no-padding no-margin position-realitive">
+              Attendees : @for(attendee of attendees;track
+              attendee.applicationUserId){
+              {{ attendee.email }} }
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Loop through meetings and position them over the intervals -->
+      <!-- <div class="hour-box">
+        <div
+          *ngIf="isTimelineInInterval(interval)"
+          class="user-timeline display-block no-padding no-margin"
+          [style.top]="getBottom(interval) + '%'"
+          [style.height]="getHeight(interval) + '%'"
+        >
+          <strong class="text-size-16">
+            {{ getName(interval) }}
+          </strong>
+          <hr />
+          <div class="text-size-12 no-padding no-margin position-realitive">
+            Attendees : @for(attendee of attendees;track attendee.userId){
+            {{ attendee.email }} }
+          </div>
+        </div> 
+      </div> -->
+    </div>
+  </div>
+</div>

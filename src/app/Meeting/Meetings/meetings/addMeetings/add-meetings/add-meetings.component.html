@@ -1,0 +1,167 @@
+<div class="flex-box no-margin">
+  <div class="col-md-6 col-md-offset-3 w-100">
+    <h1>Add a Meetings</h1>
+    <hr />
+
+    <form
+      id="add-Meeting"
+      name="form"
+      [formGroup]="addMeetingForm"
+      (ngSubmit)="addMeeting()"
+      novalidate
+    >
+      <div class="mb-3">
+        <label for="name" class="form-label">Name of the Meeting</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          placeholder="Google Campeign"
+          formControlName="name"
+          rows="1"
+          name="name"
+          required
+        />
+      </div>
+      <small
+        class="error-message"
+        *ngIf="addMeetingForm.errors && addMeetingForm.errors['errorName']"
+      >
+        <!-- {{ addMeetingForm.errors?["errorMessage"] }} -->
+        {{ addMeetingForm.errors["errorName"] }}
+      </small>
+      <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input
+          type="date"
+          id="date"
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          ngbDatepicker
+          #datepicker="ngbDatepicker"
+          formControlName="date"
+          required
+        />
+      </div>
+      <small
+        class="error-message"
+        *ngIf="addMeetingForm.errors && addMeetingForm.errors['errorDate']"
+      >
+        <!-- {{ addMeetingForm.errors?["errorMessage"] }} -->
+        {{ addMeetingForm.errors["errorDate"] }}
+      </small>
+      <div formGroupName="startTime">
+        <div class="mb-3">
+          <label>
+            <div>Start Time</div>
+            <!-- First Name Input -->
+            <input
+              type="number"
+              name="hours"
+              formControlName="hours"
+              placeholder="0"
+              [min]="0"
+              [max]="23"
+              class="time"
+              required
+            />
+            :
+            <!-- Last Name Input -->
+            <input
+              type="number"
+              name="minutes"
+              formControlName="minutes"
+              placeholder="0"
+              [min]="0"
+              [max]="59"
+              class="time"
+              required
+            />
+          </label>
+        </div>
+      </div>
+
+      <div formGroupName="endTime">
+        <div class="mb-3">
+          <label>
+            <div>End Time</div>
+            <!-- First Name Input -->
+            <input
+              type="number"
+              name="hours"
+              formControlName="hours"
+              placeholder="0"
+              [min]="0"
+              [max]="23"
+              class="time"
+            />
+            :
+            <!-- Last Name Input -->
+            <input
+              type="number"
+              name="minutes"
+              formControlName="minutes"
+              placeholder="0"
+              [min]="0"
+              [max]="59"
+              class="time"
+            />
+          </label>
+        </div>
+      </div>
+
+      <!-- && !addMeetingForm.errors?['errorMessage'] -->
+      <small
+        class="error-message"
+        *ngIf="addMeetingForm.errors && addMeetingForm.errors['TimeError']"
+      >
+        <!-- {{ addMeetingForm.errors?["errorMessage"] }} -->
+        {{ addMeetingForm.errors["TimeError"] }}
+      </small>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          type="text"
+          id="name"
+          class="form-control"
+          placeholder="What is the agenda of the meeting?"
+          formControlName="description"
+          rows="3"
+          name="description"
+          required
+        ></textarea>
+      </div>
+
+      <small
+        class="error-message"
+        *ngIf="
+          addMeetingForm.errors && addMeetingForm.errors['errorDescription']
+        "
+      >
+        <!-- {{ addMeetingForm.errors?["errorMessage"] }} -->
+        {{ addMeetingForm.errors["errorDescription"] }}
+      </small>
+
+      <div class="mb-3">
+        <label for="emails" class="form-label">Emails</label>
+        <input
+          type="emails"
+          id="emails"
+          class="form-control"
+          placeholder="john@example.com, @annual-day,@mark@example.com"
+          formControlName="emails"
+          rows="1"
+          name="emails"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary" [disabled]="!addMeetingForm.valid">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

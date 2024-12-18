@@ -1,0 +1,13 @@
+<div>
+  @for(toast of toastService.getToasts();track toast){
+  <ngb-toast
+    class="mb-3"
+    [class]="getColor(toast.className)"
+    [autohide]="true"
+    [delay]="toast.duration || 5000"
+    (hidden)="toastService.remove(toast)"
+  >
+    {{ toast.message }}
+  </ngb-toast>
+  }
+</div>
