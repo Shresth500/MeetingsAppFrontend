@@ -262,7 +262,7 @@ export class CalendarComponent implements OnInit {
     //const val = (numberOfBlocks + (numberOfBlocks - 1) / 5) * 100;
     const val = numberOfBlocks * 100;
     //console.log(startMinutes + ' ' + endMinutes + ' ' + val);
-    return val;
+    return val + 10 * numberOfBlocks;
   }
 
   updateTimeline(): void {

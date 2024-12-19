@@ -8,7 +8,7 @@ export interface ILogin {
 }
 
 export interface ISignin {
-  name: string;
+  username: string;
   email: string;
   password: string;
 }
@@ -21,13 +21,11 @@ export class AuthService {
   private apiUrl = `https://localhost:7181`;
   constructor(private http: HttpClient) {}
   signin(credentials: ISignin) {
-    return this.http.post<ISignin>(
+    return this.http.post<string>(
       `${this.apiUrl}/api/auth/register/`,
       credentials,
       {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        responseType: 'text' as 'json', // 'json' is required here for type compatibility
       }
     );
   }

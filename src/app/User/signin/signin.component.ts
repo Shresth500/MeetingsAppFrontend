@@ -25,6 +25,8 @@ export class SigninComponent {
   sigin(form: NgForm) {
     this.credentials = { ...form.value };
     console.log(this.credentials);
+    // this.credentials.username = form.value.name;
+    console.log(this.credentials);
     this.auth.signin(this.credentials).subscribe({
       next: (registered) => {
         this.router.navigate(['/auth', 'login']);

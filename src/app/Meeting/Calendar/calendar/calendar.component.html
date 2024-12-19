@@ -46,7 +46,7 @@
           class="w-100 h-100 no-margin no-padding"
           *ngIf="isTimelineInInterval(interval)"
         >
-          @for(calendar of getCalendarData(interval);track calendar._id){
+          @for(calendar of getCalendarData(interval);track calendar.id){
           <div
             *ngIf="getBottom(calendar) !== '' && getHeight(calendar) !== ''"
             class="user-timeline no-margin no-padding"
